@@ -9,12 +9,18 @@ class Base(DeclarativeBase):
 
 def _make_engine():
     url = settings.DATABASE_URL
-    # Supabase / 本番PostgreSQLはSSL必須。asyncpg形式に変換しSSLを付与
+    # asyncpg形式に正規化
     if url.startswith("postgresql://"):
         url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
-    connect_args = {}
-    if "supabase.co" in url or settings.DB_SSL:
-        connect_args["ssl"] = "require"
+    # Neon は ?sslmode=require をURLに含むが asyncpg は connect_args で指定する必要がある
+    ssl_needed = (
+        "supabase.co" in url
+        or "neon.tech" in url
+        or "sslmode=require" in url
+        or settings.DB_SSL
+    )
+    url = url.split("?")[0]  # クエリパラメータを除去
+    connect_args = {"ssl": "require"} if ssl_needed else {}
     return create_async_engine(url, echo=False, connect_args=connect_args)
 
 
