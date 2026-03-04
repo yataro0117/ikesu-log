@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ocean-deep: #082f49;
+  --ocean-mid: #0369a1;
+  --ocean-light: #0ea5e9;
+  --teal-accent: #14b8a6;
+  --surface: #f0f9ff;
+  --text-primary: #0c4a6e;
+  --text-secondary: #0369a1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background: var(--surface);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile-first scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safe area for notched phones */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Bottom tab bar height */
+.tab-bar-height {
+  height: 4rem;
+}
+
+/* Page content padding for bottom tab */
+.page-content {
+  padding-bottom: 5rem;
+}
+
+/* BottomSheet animation */
+.bottom-sheet-overlay {
+  background: rgba(8, 47, 73, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+/* Card styles */
+.card-ocean {
+  background: white;
+  border: 1px solid #bae6fd;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(3, 105, 161, 0.08);
+}
+
+/* Input styles */
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Disable double-tap zoom on buttons */
+button {
+  touch-action: manipulation;
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  border: 1px solid #bae6fd;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: #0c4a6e;
+  background: #f0f9ff;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-input:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  background: white;
+}
+
+.form-input::placeholder {
+  color: #7dd3fc;
+}

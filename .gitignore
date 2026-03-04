@@ -1,0 +1,28 @@
+# Node
+node_modules/
+.next/
+.vercel/
+frontend/.next/
+frontend/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+backend/__pycache__/
+
+# Env
+.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+backend/uploads/
+
+# Docker
+pgdata/

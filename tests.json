@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "updated": "2026-03-04",
+  "checks": [
+    {"id": "auth-login", "desc": "POST /auth/login でJWT取得", "status": "pass"},
+    {"id": "auth-me", "desc": "GET /auth/me で自分のユーザー情報取得", "status": "pass"},
+    {"id": "qr-token", "desc": "GET /qr/{token} がcageを返す", "status": "pass"},
+    {"id": "event-feeding", "desc": "POST /events で FEEDING イベント作成", "status": "pass"},
+    {"id": "event-mortality", "desc": "POST /events で MORTALITY イベント作成", "status": "pass"},
+    {"id": "event-sampling", "desc": "POST /events で SAMPLING イベント作成", "status": "pass"},
+    {"id": "kpi-count", "desc": "推定尾数 = 初期尾数 - 累積死亡 ± 移動", "status": "pass"},
+    {"id": "kpi-biomass", "desc": "推定バイオマス = 推定尾数 × 推定平均体重", "status": "pass"},
+    {"id": "kpi-fcr", "desc": "簡易FCR(14日) = 期間給餌量 / 期間増体量", "status": "pass"},
+    {"id": "ui-today", "desc": "ログイン後「今日」画面が出る", "status": "pass"},
+    {"id": "ui-cage-list", "desc": "生簀一覧/マップが見える", "status": "pass"},
+    {"id": "ui-qr-scan", "desc": "/qr/{token} で該当生簀詳細が開く", "status": "pass"},
+    {"id": "ui-quick-input", "desc": "BottomSheetで給餌/死亡/計測/メモ/環境/投薬を登録", "status": "pass"},
+    {"id": "ui-prev-copy", "desc": "前回値コピーが効く", "status": "pass"},
+    {"id": "ui-todo", "desc": "未入力生簀が今日のToDoに出る", "status": "pass"},
+    {"id": "lot-receive", "desc": "魚群(Lot)受入ができる", "status": "pass"},
+    {"id": "lot-move", "desc": "魚群移動ができ履歴が破綻しない", "status": "pass"},
+    {"id": "lot-split", "desc": "分養ができ履歴が破綻しない", "status": "pass"},
+    {"id": "lot-harvest", "desc": "出荷イベントが登録できる", "status": "pass"},
+    {"id": "offline-sync", "desc": "IndexedDBキュー→復帰時にまとめて送信", "status": "pass"},
+    {"id": "docker-up", "desc": "docker compose up でサービス全起動", "status": "pass"}
+  ]
+}
