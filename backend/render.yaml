@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ikesu-log-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head && python -m app.db.seed && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false  # Supabase の接続文字列を手動で設定
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "1440"
+      - key: DB_SSL
+        value: "true"
+      - key: CORS_ORIGINS
+        sync: false  # Vercel の URL を設定
